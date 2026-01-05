@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Befunge-93 Visual Debugger</title>
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+<header class="app-header">
+  <div class="logo">
+    🧩 Befunge-93 Visual Debugger
+  </div>
+
+  <div class="header-info">
+    <span class="badge">80 × 25 Grid</span>
+    <span class="badge">Time-Travel Debugger</span>
+    <span class="badge">Canvas Renderer</span>
+  </div>
+</header>
+
+<!-- =========================
+     MAIN LAYOUT
+========================= -->
+<div class="app-layout">
+
+  <!-- =========================
+       LEFT PANEL
+  ========================= -->
+  <section class="panel panel-left">
+
+    <!-- Code Editor -->
+    <div class="panel-block">
+      <h2 class="panel-title">📄 Befunge Source Code</h2>
+
+      <textarea id="codeEditor" spellcheck="false">
+>987v>.v
+v456<  :
+>321 ^ _@
+      </textarea>
+    </div>
+
+    <!-- Controls -->
+    <div class="panel-block">
+      <h2 class="panel-title">🎮 Controls</h2>
+
+      <div class="controls-row">
+        <button id="btnStep">⏭ Step</button>
+        <button id="btnRun">▶ Run</button>
+        <button id="btnPause">⏸ Pause</button>
+        <button id="btnBack">⏮ Step Back</button>
+        <button id="btnReset" class="danger">🔄 Reset</button>
+      </div>
+
+      <div class="controls-row">
+        <label>
+          Speed:
+          <input type="range" id="speedControl" min="50" max="1000" value="300">
+        </label>
+        <span id="speedLabel">300 ms</span>
+      </div>
+    </div>
+
+    <!-- Canvas Area -->
+    <div class="panel-block">
+      <h2 class="panel-title">🧠 Execution Grid</h2>
+
+      <div class="canvas-wrapper">
+        <canvas id="befungeCanvas" width="1600" height="500"></canvas>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- =========================
+       RIGHT PANEL
+  ========================= -->
+  <section class="panel panel-right">
+
+    <!-- Stack -->
+    <div class="panel-block">
+      <h2 class="panel-title">📦 Stack (Top → Bottom)</h2>
+      <div id="stackView" class="stack-view"></div>
+    </div>
+
+    <!-- Output -->
+    <div class="panel-block">
+      <h2 class="panel-title">🖨 Program Output</h2>
+      <pre id="outputView" class="output-view"></pre>
+    </div>
+
+    <!-- Instruction Info -->
+    <div class="panel-block">
+      <h2 class="panel-title">📍 Current Instruction</h2>
+      <div class="instruction-info">
+        <div><strong>IP:</strong> <span id="ipPos">0,0</span></div>
+        <div><strong>Direction:</strong> <span id="ipDir">→</span></div>
+        <div><strong>Instruction:</strong> <span id="currentInstr">></span></div>
+      </div>
+    </div>
+
+    <!-- Execution Trace -->
+    <div class="panel-block">
+      <h2 class="panel-title">🧪 Execution Trace</h2>
+      <pre id="traceView" class="trace-view"></pre>
+    </div>
+
+  </section>
+
+</div>
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer class="app-footer">
+  <span>
+    Befunge-93 Visual Debugger • Built for learning & deep inspection
+  </span>
+</footer>
+
+<!-- =========================
+     SCRIPTS
+========================= -->
+<script src="engine.js"></script>
+<script src="renderer.js"></script>
+<script src="debugger.js"></script>
+<script src="controls.js"></script>
+
+</body>
+</html>
